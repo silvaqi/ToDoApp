@@ -23,7 +23,8 @@ button.addEventListener('click', function(){
     let txt = taskvalue
     const d = new Date()
 
-    _('task').innerHTML += `<div class="card"><input type="checkbox"> ${txt}, ${d.toLocaleString()}</div>`
+    const valstorage = _('task').innerHTML += `<div class="card"><input type="checkbox"> ${txt}, ${d.toLocaleString()}</div>`
+    localStorage.setItem('Task', valstorage)
 
     const lengthtasks = document.getElementsByClassName("card").length
     _('totaltasks').innerHTML = `${lengthtasks}`
@@ -42,4 +43,10 @@ button.addEventListener('click', function(){
 
 function deleteTasks(){
         document.querySelectorAll('.card').forEach(e => e.remove())
+        localStorage.removeItem('Task')
+}
+
+function getTasks(){
+    var messageTasks = localStorage.getItem('Task')
+    _('task').innerHTML += `${messageTasks}`
 }
