@@ -51,8 +51,5 @@ function getTasks(){
     if(messageTasks == null){
         localStorage.setItem('Task', "")
     }
-    /*while(messageTasks == null){
-        localStorage.setItem("Task", "")
-    }/*
     _('task').innerHTML += `${messageTasks}`
 }
