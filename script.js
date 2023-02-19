@@ -46,7 +46,7 @@ function deleteTasks(){
         localStorage.removeItem('Task')
 }
 
-if(messageTasks == null || messageTasks == undefined || messageTasks == ""){
+if(messageTasks == null){
     localStorage.setItem('Task', "")
 }
 
