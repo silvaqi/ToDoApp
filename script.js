@@ -48,7 +48,7 @@ function deleteTasks(){
 
 function getTasks(){
     var messageTasks = localStorage.getItem('Task')
-    if(messageTasks == null){
+    if(messageTasks == null || messageTasks == undefined || messageTasks == ""){
         localStorage.setItem('Task', "")
     }
     _('task').innerHTML += `${messageTasks}`
