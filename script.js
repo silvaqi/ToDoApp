@@ -50,3 +50,5 @@ function getTasks(messageTasks){
     messageTasks = localStorage.getItem('Task')
     _('task').innerHTML += `${messageTasks}`
 }
+
+console.log("");
