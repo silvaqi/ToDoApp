@@ -9,10 +9,11 @@ function getRs(){
     if(taskvalue == null || taskvalue == "null" || taskvalue == ""){
         return
     }
-    let txt = taskvalue
-    const d = new Date()
+    let txt = taskvalue;
+    const d = new Date();
+    const id = Math.floor(Math.random()* 10);
 
-    const valstorage = _('task').innerHTML += `<div class="card"><input type="checkbox"> ${txt}, ${d.toLocaleString()}</div>`
+    const valstorage = _('task').innerHTML += `<div class="card"><input type="checkbox"> ${txt}, ${d.toLocaleString()}<span>ID(${id})</span></div>`
     localStorage.setItem('Task', valstorage)
 
     const lengthtasks = document.getElementsByClassName("card").length
