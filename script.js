@@ -5,17 +5,6 @@ function _(id){
 _('totaltasks').innerHTML = `<div>0</div>`
 
 function getRs(){
-    /*const button = document.querySelector(".deleteTasks")
-
-button.addEventListener('click', function(){
-        if(lengthtasks === 0 || lengthtasks === null || lengthtasks <= 0){
-            alert("You don't have tasks for delete")
-        }
-})*/
-    /*if(lengthtasks >= 11){
-        alert("You can't add more tasks")
-        return
-    }*/
     const taskvalue = prompt("Insert something task.")
     if(taskvalue == null || taskvalue == "null" || taskvalue == ""){
         return
@@ -28,11 +17,11 @@ button.addEventListener('click', function(){
 
     const lengthtasks = document.getElementsByClassName("card").length
     _('totaltasks').innerHTML = `${lengthtasks}`
+    localStorage.setItem('length', lengthtasks)
 
-    /*if(lengthtasks >= 10){
-        //alert("Limit exceeded.")
-        setTimeout( function ( ) { alert( "Limit exceeded" ); }, 3000 )
-    }*/
+    if(document.getElementById("noneTasks").style.display !== "none" ){
+        document.getElementById("noneTasks").style.display = "none"
+    }
 
     if(lengthtasks == 11){
        deleteTasks()
@@ -44,11 +33,19 @@ button.addEventListener('click', function(){
 function deleteTasks(){
         document.querySelectorAll('.card').forEach(e => e.remove())
         localStorage.removeItem('Task')
+        localStorage.setItem('length', '0')
+        _('totaltasks').innerHTML = localStorage.getItem('length')
+        document.getElementById("noneTasks").style.display = "block"
 }
 
 function getTasks(messageTasks){
     messageTasks = localStorage.getItem('Task')
-    _('task').innerHTML += `${messageTasks}`
+    if(messageTasks){
+        document.getElementById("noneTasks").style.display = "none"
+        _('task').innerHTML = `${messageTasks}`
+    }
+    const valuet = localStorage.getItem('length')
+    _('totaltasks').innerHTML = `${valuet}`
 }
 
 console.log("");
